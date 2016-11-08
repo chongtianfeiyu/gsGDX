@@ -5,6 +5,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
@@ -56,13 +57,13 @@ public class ReflectionsPluginBuilder extends PluginBuilder {
 	}
 
 	@Override
-	protected void loadElements() {
-		setElements(reflections.getTypesAnnotatedWith(Element.class));
+	public Set<Class<?>> getElements() {
+		return reflections.getTypesAnnotatedWith(Element.class);
 	}
 
 	@Override
-	protected void loadPluginName() {
-		setPluginName(pluginDir.name());
+	public String getPluginName() {
+		return pluginDir.name();
 	}
 
 }
