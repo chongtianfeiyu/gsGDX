@@ -10,10 +10,13 @@ import com.badlogic.gdx.files.FileHandle;
 
 public class ReflectionsPluginBuilderTest {
 
+	private final String resourcesPath = "test/resources/";
+	private final String testJarFileName = "test.jar";
+	
 	@Test(expected=IllegalArgumentException.class)
 	public void testThrowsExceptionIfFileGivenOnConstruct() throws IOException {
 		
-		FileHandle file = new FileHandle("test/resources/test.jar");
+		FileHandle file = new FileHandle(resourcesPath + testJarFileName);
 		
 		new ReflectionsPluginBuilder(file);
 		
@@ -23,7 +26,7 @@ public class ReflectionsPluginBuilderTest {
 	@Test
 	public void testElementsAreLoaded() throws IOException {
 		
-		FileHandle dir = new FileHandle("test/resources/");
+		FileHandle dir = new FileHandle(resourcesPath);
 		PluginBuilder builder = new ReflectionsPluginBuilder(dir);
 		
 		Plugin plugin = builder.build();
@@ -35,7 +38,7 @@ public class ReflectionsPluginBuilderTest {
 	@Test
 	public void testNameIsSet() throws IOException {
 	
-		FileHandle dir = new FileHandle("test/resources/");
+		FileHandle dir = new FileHandle(resourcesPath);
 		PluginBuilder builder = new ReflectionsPluginBuilder(dir);
 		
 		Plugin plugin = builder.build();
