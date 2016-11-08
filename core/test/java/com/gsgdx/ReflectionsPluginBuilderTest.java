@@ -29,6 +29,7 @@ public class ReflectionsPluginBuilderTest {
 		Plugin plugin = builder.build();
 		
 		assertTrue(plugin.getElements().size() == 1);
+		assertTrue(plugin.getElements().iterator().next().getSimpleName().equals("TestClass1"));
 	}
 	
 	@Test
